@@ -9,7 +9,7 @@ Start Stop Reset
 window.onload = ()=>{
     beginWatch()
 }
-let watch, secs=0, mins=0;
+let watch, secs=0, mins=0, hours=0;;
 function beginWatch(){
     let intervalWatch;
     let btnStart = document.getElementById("start");
@@ -46,11 +46,19 @@ function beginWatch(){
 // Function that starts the watch
 function startWatch(){
     secs++;
-    mins = secs==60?mins+1:mins;
+    mins = secs==60?Number(mins)+1:mins;
     secs = secs==60?0:secs;
-    mins = mins.toString.length==1?"0"+mins:mins;
+    hours = mins==60?Number(hours)+1:hours;
+    mins = mins==60?0:mins;
+
+    hours = hours.toString().length==1? "0"+hours:hours;
+    mins = mins.toString().length==1? "0"+mins:mins;
     secs = secs<10?"0"+secs:secs;
-    watch.innerHTML = mins+":"+secs; 
+
+    if(hours == 0)
+        watch.innerHTML = mins+":"+secs;
+    else
+        watch.innerHTML = hours+":"+mins+":"+secs;
 }
 
 // Function that reset the watch
