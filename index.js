@@ -55,10 +55,9 @@ function startWatch(){
     mins = mins.toString().length==1? "0"+mins:mins;
     secs = secs<10?"0"+secs:secs;
 
-    if(hours == 0)
-        watch.innerHTML = mins+":"+secs;
-    else
-        watch.innerHTML = hours+":"+mins+":"+secs;
+
+        watch.innerHTML = hours == 0?mins+":"+secs:
+        hours+":"+mins+":"+secs;
 }
 
 // Function that reset the watch
