@@ -25,19 +25,33 @@ function beginWatch(){
     // Starts the watch, save the interval and disbles the start button
     btnStart.addEventListener("click", ()=>{
         startWatch();
+        btnStop.disabled = false;
         intervalWatch = setInterval(startWatch, 1000);
+        btnStart.style.opacity = "50%";
+        setTimeout(()=>{
+            btnStart.style.opacity = "100%";
+        }, 200);
         btnStart.disabled = true;
     })
 
     // Stops the watch and enables the start button
     btnStop.addEventListener("click", ()=>{
         clearInterval(intervalWatch);
+        btnStop.style.opacity = "50%";
+        setTimeout(()=>{
+            btnStop.style.opacity = "100%";
+        }, 200);
+        btnStop.disabled = true;
         btnStart.disabled = false;
     })
 
     // Resets the watch and enables the start button
     btnReset.addEventListener("click", ()=>{
         btnStart.disabled = false;
+        btnReset.style.opacity = "50%";
+        setTimeout(()=>{
+            btnReset.style.opacity = "100%";
+        }, 200);
         clearInterval(intervalWatch);
         resetWatch();
     })
